@@ -1,0 +1,31 @@
+197.Raising Temperature:
+Topics Involved:
+1.Inner join
+2.Methods-DATE_ADD(),DATE_SUB(),DATEDIFF()
+DATE_ADD():
+| Unit   | Use example        |
+| ------ | ------------------ |
+| SECOND | INTERVAL 10 SECOND |
+| MINUTE | INTERVAL 30 MINUTE |
+| HOUR   | INTERVAL 2 HOUR    |
+| DAY    | INTERVAL 7 DAY     |
+| WEEK   | INTERVAL 1 WEEK    |
+| MONTH  | INTERVAL 2 MONTH   |
+| YEAR   | INTERVAL 1 YEAR    |
+Same kind of Sysntax for DATE_SUB();
+# Write your MySQL query statement below
+select t.id  from Weather t join Weather y on (DATE_ADD(y.recordDate,INTERVAL 1 DAY )=t.recordDate) and t.temperature > y.temperature
+
+
+2.1661-Avearge Time of Processing for Machine
+# Write your MySQL query statement below
+select a.machine_id, 
+round(avg(b.timestamp -a.timestamp),3) as processing_time
+from Activity a 
+join Activity b on
+a.machine_id=b.machine_id and 
+a.process_id=b.process_id and
+ a.activity_type = 'start'
+AND b.activity_type = 'end'
+GROUP BY 
+    a.machine_id;
