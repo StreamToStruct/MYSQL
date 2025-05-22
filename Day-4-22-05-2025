@@ -1,0 +1,9 @@
+if-else in mysql
+way 1:
+case
+  when condition then 1 else 0 end;
+way 2:
+if(contidition, 1,0)
+1934.Conformation Rate
+  in this problem the main problem i faced is handling null value which can be solved using an if condition
+select s.user_id, round((avg(if(c.action='confirmed',1,0)),2) as confirmation_rate from signups s, confirmations c on s.user_id=c.user_id group bu s.user_id;
